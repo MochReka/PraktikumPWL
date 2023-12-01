@@ -13,15 +13,17 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+    
     public function index()
     {
-        $data['bookshelfs'] = Book::with('bookshelf')->get();
+
+        $data['books'] = Book::with('bookshelf')->get();
         return view('books.index', $data);
     }
 
     public function create()
     {
-        $data['bookshelves'] = Bookshelf::pluck('name', 'id');
+        $data['bookshelf'] = Bookshelf::pluck('name', 'id');
         return view('books.create', $data);
     }
 
